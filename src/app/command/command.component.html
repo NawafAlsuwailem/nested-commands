@@ -1,0 +1,37 @@
+<form [formGroup]="commandGroup" >
+  <table>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput formControlName="id" placeholder="Id">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput formControlName="text" placeholder="Text">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput formControlName="type" placeholder="Type">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+  <button mat-button-raised color="primary"(click)="addCommand()">Add Subcommand</button>
+  <ul>
+    <li *ngFor="let subcommand of commandArray?.controls; let i = index">
+      <app-command [index]="i"
+                   (addCommandEvent)="OnAddCommandEvent($event)"
+      ></app-command>
+    </li>
+  </ul>
+
+</form>
+{{this.command | json}}
+
+
+
+
