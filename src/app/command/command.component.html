@@ -1,36 +1,46 @@
 <form [formGroup]="commandGroup" >
-  <table>
-    <tr>
-      <td>
-        <mat-form-field>
-          <input matInput formControlName="id" placeholder="Id">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput formControlName="text" placeholder="Text">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput formControlName="type" placeholder="Type">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
+  <div style="background: orangered">
+    <table>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput formControlName="text" placeholder="Text">
+          </mat-form-field>
+        </td>
+        <ng-container *ngIf="this.command.subcommands.length < 1">
+        <td style="background-color: aquamarine">
+            <mat-form-field>
+              <input matInput  class="form-control" (input)="responseTextChange($event.target.value)">
+            </mat-form-field>
+        </td>
+        </ng-container>
+      </tr>
+    </table>
+  </div>
 
   <button mat-button-raised color="primary"(click)="addCommand()">Add Subcommand</button>
+  <ng-container *ngIf="this.enableDeleteButton">
+    <button mat-button-raised color="primary"(click)="deleteCommand($event)">x</button>
+  </ng-container>
+
   <ul>
-    <li *ngFor="let subcommand of commandArray?.controls; let i = index">
+    <li
+      *ngFor="
+      let subcommand of commandArray?.controls;
+      let i = index"
+    >
       <app-command [index]="i"
-                   (addCommandEvent)="OnAddCommandEvent($event)"
+                   [enableDeleteButton]="true"
+                   (updateCommandEvent)="onUpdateCommandEvent($event)"
+                   (deleteCommandEvent)="onDeleteCommandEvent($event)"
       ></app-command>
     </li>
   </ul>
-
 </form>
-{{this.command | json}}
+<button (click)="goBack()">go back</button>
+<button (click)="save()">save</button>
+{{this.command | json }}
+
 
 
 

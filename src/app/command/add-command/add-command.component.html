@@ -1,13 +1,16 @@
-<app-command [index]="0"
-             (addCommandEvent)="OnAddCommandEvent($event)">
+<div style="background: aqua">
+<app-command index="0"
+             [enableDeleteButton]="false"
+             (updateCommandEvent)="onUpdateCommandEvent($event)"
+>
 </app-command>
 
 <hr/>
 
 <p>
   final OutPut:
-
   {{this.command | json}}
 </p>
 
 <hr/>
+</div>

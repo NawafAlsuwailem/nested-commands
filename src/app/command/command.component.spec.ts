@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CommandComponent } from './command.component';
+import {CommandComponent} from './command.component';
 
 describe('CommandComponent', () => {
   let component: CommandComponent;

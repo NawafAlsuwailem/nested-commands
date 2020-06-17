@@ -1,9 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { CommandComponent } from './command/command.component';
-import {CommandService} from './command/service/command-service.service';
+import {AppComponent} from './app.component';
+import {CommandComponent} from './command/command.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -12,17 +11,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { AddCommandComponent } from './command/add-command/add-command.component';
-// import { SubcommandComponent } from './command/subcommand/subcommand.component';
+import {AddCommandComponent} from './command/add-command/add-command.component';
+import {CommandService} from './service/command.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     CommandComponent,
     AddCommandComponent,
-    // SubcommandComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,

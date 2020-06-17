@@ -1,8 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {BehaviorSubject, Observable, Subscription} from 'rxjs';
-import {CommandService} from '../service/command-service.service';
-import {Command, CommandForm} from '../_models';
+import {Component, OnInit} from '@angular/core';
+import {Command, Response} from '../_models';
 
 @Component({
   selector: 'app-add-command',
@@ -11,18 +8,13 @@ import {Command, CommandForm} from '../_models';
 })
 export class AddCommandComponent implements OnInit {
   command: Command;
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void {
-
-    this.command = new Command();
-
+      this.command = new Command();
+      this.command.response = new Response();
   }
-  deleteSubCommand(index: number) {
-    // this.commandFormService.deleteSubCommand(index);
-  }
-
-  OnAddCommandEvent(event) {
+  onUpdateCommandEvent(event) {
     this.command = event.value;
   }
 }
